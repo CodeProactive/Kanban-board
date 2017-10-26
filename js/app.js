@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+
+//   .always(function() {
+//   $(".column").sortable('refresh');
+// });
+
   //Sort List items between lists
 
      $(function() {
@@ -29,6 +34,8 @@ $(document).ready(function () {
       $(".column:last-of-type").append('<ul class="list-items sortable"></ul>')
       $('.list-items').sortable();
 
+
+
     }
 
   });
@@ -43,11 +50,23 @@ $(document).ready(function () {
 
     } else {
 
-      $(this).next('.list-items').append('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
-    
+      var newSticker = $('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
+      var lastSticker = $(this).next('.list-items');
+      newSticker.appendTo(lastSticker);
+            $('ul, li').sortable({
+            start: function(event, ui) {
+            },
+            connectWith: " .sortable"
+        }).disableSelection();
+
+      newSticker();
+      lastSticker();
+      
     }
 
   });
+
+
 
 // Delete column functionality
 
