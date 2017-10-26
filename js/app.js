@@ -19,8 +19,15 @@ $(() => {
 
   $('.board-container').on("click", '.new-sticker', function(){
     const stickerContent = prompt("Podaj teść karteczki");
-    $(this).next('.list-items').append('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
 
+    if (stickerContent == null || stickerContent.length <= 1) {
+
+      window.alert("Nazwa karteczki musi zawierać przynajmniej dwa znaki");
+
+    } else {
+
+    $(this).next('.list-items').append('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
+    }
   });
 
   $('.board-container').on("click", '.delete-column', function(){
