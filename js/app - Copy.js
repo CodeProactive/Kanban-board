@@ -15,8 +15,9 @@ $(document).ready(function () {
       $(".column:last-of-type").append('<button class="delete-column">x</button>')
       $(".column:last-of-type").append('<h2 class="headerly">' + columnHeader + '</h2>')
       $(".column:last-of-type").append('<button class="new-sticker">Dodaj kartkę</button>')
-      $(".column:last-of-type").append('<ul class="list-items sortable"></ul>')
-      $('.sortable').sortable();
+      $(".column:last-of-type").append('<ul class="list-items droppable sortable"></ul>')
+      // $('.droppable').droppable()
+      $('.sortable').sortable()
 
     }
 
@@ -32,8 +33,8 @@ $(document).ready(function () {
 
     } else {
 
-      $(this).next('.list-items').append('<li class=""><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
-    
+      $(this).next('.list-items').append('<li class="draggable"><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
+      $('.draggable').draggable()
     }
 
   });
@@ -54,6 +55,20 @@ $(document).ready(function () {
 
   });
 
+//  Drag and drop divs
+
+ // $(function(){
+ //    $(".droppable").droppable(
+ //        {
+ //        drop: function(ev, ui) {
+ //            var dropped = ui.draggable;
+ //            var droppedOn = $(this);
+ //            $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
+ //        }
+ //    });
+
+ //    });
+
      $(function() {
         var oldList, newList, item;
         $('.sortable').sortable({
@@ -69,6 +84,22 @@ $(document).ready(function () {
             connectWith: ".sortable"
         }).disableSelection();
     });
+
+
+
+//     $(function () {
+//         $(".draggable").sortable({
+//                 connectWith: ".draggable",
+//                 start: function (event, ui) {
+//                         ui.item.toggleClass("highlight");
+//                 },
+//                 stop: function (event, ui) {
+//                         ui.item.toggleClass("highlight");
+//                 }
+//         });
+//         $(".draggable").disableSelection();
+// });
+
 
 });
 
