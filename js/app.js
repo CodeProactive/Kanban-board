@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+  //Sort List items between lists
+
+     $(function() {
+      event.preventDefault()
+        $('ul, li').sortable({
+            start: function(event, ui) {
+            },
+            connectWith: " .sortable"
+        }).disableSelection();
+    });
+
 // Appending new columns 
   $('.add-column').on('click', function(e) {
 
@@ -16,7 +27,7 @@ $(document).ready(function () {
       $(".column:last-of-type").append('<h2 class="headerly">' + columnHeader + '</h2>')
       $(".column:last-of-type").append('<button class="new-sticker">Dodaj kartkę</button>')
       $(".column:last-of-type").append('<ul class="list-items sortable"></ul>')
-      $('.sortable').sortable();
+      $('.list-items').sortable();
 
     }
 
@@ -32,7 +43,7 @@ $(document).ready(function () {
 
     } else {
 
-      $(this).next('.list-items').append('<li class=""><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
+      $(this).next('.list-items').append('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
     
     }
 
@@ -54,21 +65,7 @@ $(document).ready(function () {
 
   });
 
-     $(function() {
-        var oldList, newList, item;
-        $('.sortable').sortable({
-            start: function(event, ui) {
-                item = ui.item;
-                newList = oldList = ui.item.parent().parent();
-            },
-            stop: function(event, ui) {          
-            },
-            change: function(event, ui) {  
-                if(ui.sender) newList = ui.placeholder.parent().parent();
-            },
-            connectWith: ".sortable"
-        }).disableSelection();
-    });
+  // $( ".sortable" ).sortable("refresh");
 
 });
 
