@@ -50,17 +50,12 @@ $(document).ready(function () {
 
     } else {
 
-      var newSticker = $('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
-      var lastSticker = $(this).next('.list-items');
-      newSticker.appendTo(lastSticker);
-            $('ul, li').sortable({
+      $(this).next('.list-items').append('<li><p class="paragraphly"><button class="delete-paragraph">x</button>' + stickerContent + '</p></li>');
+      $('ul, li').sortable({
             start: function(event, ui) {
             },
             connectWith: " .sortable"
         }).disableSelection();
-
-      newSticker();
-      lastSticker();
       
     }
 
